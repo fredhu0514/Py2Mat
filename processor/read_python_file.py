@@ -10,5 +10,5 @@ class ParsePythonFile:
         data = []
         for line in f.readlines():
             data.append(line)
-        print(data)
+        f.close()
         return data

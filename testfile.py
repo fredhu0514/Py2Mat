@@ -1,17 +1,11 @@
-a = True
-b = False
-
-c = a & b
-d = a | b
+# import processor.read_python_file as pr
+# import processor.write_matlab_file as pw
+import processor.core_processor as pc
 
 
+def test():
+    print(pc.CoreProcessor.inline_process('"Seriously?" """'))
 
-
-
-def a(b):
-    print(b)
 
 if __name__ == "__main__":
-    a(c)
-    a(d)
-    b += 4
+    test()

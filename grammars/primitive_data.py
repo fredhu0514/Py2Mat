@@ -35,11 +35,9 @@ class String:
 
             split_data.pop(0) # Pop the first null char
             string_data = '"' + split_data.pop(0) + '"' # Wanted content
-
             # Get the rest words
             if split_data:
-                later_text = split_data[0]
-                split_data.pop(0)
+                later_text = split_data.pop(0)
                 for i in split_data:
                     later_text += '"'
                     later_text += i
@@ -60,8 +58,7 @@ class String:
 
             # Get the rest words
             if split_data:
-                later_text = split_data[0]
-                split_data.pop(0)
+                later_text = split_data.pop(0)
                 for i in split_data:
                     later_text += "'"
                     later_text += i
@@ -103,8 +100,7 @@ class PrimitiveData:
         split_data.pop(0)
 
         if split_data:
-            later_text = ' ' + split_data[0]
-            split_data.pop(0)
+            later_text = ' ' + split_data.pop(0)
             for item in split_data:
                 later_text += ' '
                 later_text += item
@@ -127,11 +123,12 @@ class PrimitiveData:
         return self.aim_content
 
 if __name__ == "__main__":
-    print(String('"DQ1" + "DQ2"\n'))
-    print(String("'SQ1' + 'SQ2'\n"))
-    print(PrimitiveData("5 ** 2 = 25\n"))
-    print(PrimitiveData("5 % 2 = 2\n"))
-    print(PrimitiveData("5 'An int'\n"))
-    print(PrimitiveData("6.7584 'A float'\n"))
-    print(PrimitiveData("True 'bool True'\n"))
-    print(PrimitiveData("False 'bool False'\n"))
+    # print(String('"DQ1" + "DQ2"\n'))
+    # print(String("'SQ1' + 'SQ2'\n"))
+    # print(PrimitiveData("5 ** 2 = 25\n"))
+    # print(PrimitiveData("5 % 2 = 2\n"))
+    # print(PrimitiveData("5 'An int'\n"))
+    # print(PrimitiveData("6.7584 'A float'\n"))
+    # print(PrimitiveData("True 'bool True'\n"))
+    # print(PrimitiveData("False 'bool False'\n"))
+    print(String('"Seriously?" """\n'))

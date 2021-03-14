@@ -11,17 +11,17 @@ COMMENT_STATUS_CHANGE = 1
 
 class Separator:
     @classmethod
-    def separate(cls, line, cast_comments=False):
+    def separate(cls, line, cast_comments):
         # COMMENTS
-        if line[0:3] == '"""' or line[0:3] == "'''" or line[0:1] == '#' or cast_comments:
+        if (len(line) > 0 and line[0:1] == '#') or (len(line) >= 2 and (line[0:3] == '"""' or line[0:3] == "'''")):
             obj = cmt.Comment(line)
             status = NORMAL
-            if obj.type == 3 or obj.type == 5:
+            if obj.type == cmt.Comment.CommentType.THREE_DOUBLE_QUOTES_SEPARATE or obj.type == cmt.Comment.CommentType.THREE_SINGLE_QUOTES_SEPARATE:
                 status = COMMENT_STATUS_CHANGE
             return obj.aim_content, status # if obj.type == 3 or 5 cast_comment = True
 
         # PRIMITIVE DATA
-        if line[0:1] == "'" or line[0:1] == '"':
+        if len(line) > 0 and (line[0] == "'" or line[0] == '"'):
             obj = pd.String(line)
             return obj.aim_content, NORMAL
         try:
@@ -47,6 +47,12 @@ class Separator:
             pass
 
 
+        if cast_comments:
+            obj = cmt.Comment(line)
+            status = NORMAL
+            if obj.type == cmt.Comment.CommentType.THREE_DOUBLE_QUOTES_SEPARATE or obj.type == cmt.Comment.CommentType.THREE_SINGLE_QUOTES_SEPARATE:
+                status = COMMENT_STATUS_CHANGE
+            return obj.aim_content, status
 
         if line:
             count = 0

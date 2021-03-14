@@ -51,8 +51,7 @@ class Comment:
             cur_content = split_data.pop(0)
 
             if split_data:
-                later_text = split_data[0]
-                split_data.pop(0)
+                later_text = split_data.pop(0)
                 for i in split_data:
                     later_text += '"""'
                     later_text += i
@@ -62,7 +61,6 @@ class Comment:
             return "%" + cur_content + cp.CoreProcessor.inline_process(later_text)
 
         elif line_type == self.CommentType.THREE_DOUBLE_QUOTES_SEPARATE:
-            print("DEBUG", raw_line[3:len(raw_line)])
             return "%" + cp.CoreProcessor.inline_process(raw_line[3:len(raw_line)])
 
         elif line_type == self.CommentType.THREE_SINGLE_QUOTES_INLINE:
@@ -71,8 +69,7 @@ class Comment:
             cur_content = split_data.pop(0)
 
             if split_data:
-                later_text = split_data[0]
-                split_data.pop(0)
+                later_text = split_data.pop(0)
                 for i in split_data:
                     later_text += "'''"
                     later_text += i
@@ -110,7 +107,3 @@ if __name__ == "__main__":
     print(Comment("''' lc\n"))
     print(Comment("'''"))
     print("###################################")
-
-
-
-
