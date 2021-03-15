@@ -1,7 +1,7 @@
 %
 "Seriously?" %
 % 'INDENTATION'
-% 
+%
 % space1
 %
 

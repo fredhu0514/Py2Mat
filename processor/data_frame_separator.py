@@ -82,6 +82,3 @@ class Separator:
         if len(line) >= 5:
             if line[0:5] == 'while':
                 pass
-
-
-
