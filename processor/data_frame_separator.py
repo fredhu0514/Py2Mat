@@ -60,6 +60,9 @@ class Separator:
 
     @classmethod
     def frame_separate(cls, line):
+        # print("+++++++")
+        # print("DEBUG2", line, "END")
+        # print("+++++++")
         if not line:
             return line, EMPTY
 
