@@ -5,8 +5,10 @@ import processor.core_processor as pc
 
 def run(file_name):
     python_data = pr.ParsePythonFile.file2list("./z-test_in/" + file_name + ".py")
+    python_data.append("EOF")
     matlab_data = []
     pc.CoreProcessor.frame_process(python_data, matlab_data)
+    print(matlab_data.pop())
     pw.WriteMatlabFile.list2file(matlab_data, "./z-test_out/" + file_name + ".m")
 
 
