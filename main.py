@@ -6,11 +6,13 @@ import processor.core_processor as pc
 def run(file_name):
     python_data = pr.ParsePythonFile.file2list("./z-test_in/" + file_name + ".py")
     matlab_data = []
-    for i in python_data:
-        matlab_data.append(pc.CoreProcessor.frame_process(i))
+    pc.CoreProcessor.frame_process(python_data, matlab_data)
     pw.WriteMatlabFile.list2file(matlab_data, "./z-test_out/" + file_name + ".m")
 
 
 if __name__ == "__main__":
-    filename = "primitive_data_type"
-    run("simple_comments_test")
+    primitive_data_type = "primitive_data_type"
+    operations = "operations"
+    comments = "simple_comments_test"
+    indentation = "indentation_if_test"
+    run(indentation)

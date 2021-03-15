@@ -9,4 +9,3 @@ boolean_false = False
 char_type = 'c'
 
 string_type = "String"
-

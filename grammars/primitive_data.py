@@ -123,12 +123,12 @@ class PrimitiveData:
         return self.aim_content
 
 if __name__ == "__main__":
-    # print(String('"DQ1" + "DQ2"\n'))
-    # print(String("'SQ1' + 'SQ2'\n"))
-    # print(PrimitiveData("5 ** 2 = 25\n"))
-    # print(PrimitiveData("5 % 2 = 2\n"))
-    # print(PrimitiveData("5 'An int'\n"))
-    # print(PrimitiveData("6.7584 'A float'\n"))
-    # print(PrimitiveData("True 'bool True'\n"))
-    # print(PrimitiveData("False 'bool False'\n"))
-    print(String('"Seriously?" """\n'))
+    print(String('"DQ1" + "DQ2"\n'))
+    print(String("'SQ1' + 'SQ2'\n"))
+    print(PrimitiveData("5 ** 2 = 25\n"))
+    print(PrimitiveData("5 % 2 = 2\n"))
+    print(PrimitiveData("5 'An int'\n"))
+    print(PrimitiveData("6.7584 'A float'\n"))
+    print(PrimitiveData("True 'bool True'\n"))
+    print(PrimitiveData("False 'bool False'\n"))
+    # print(String('"Seriously?" """\n'))
