@@ -18,4 +18,6 @@ if __name__ == "__main__":
     comments = "simple_comments_test"
     indentation = "indentation_if_test"
     while_loop = "while_loop_test"
-    run(while_loop)
+    complex_func_test = "complex_func_test"
+    simple_func_test = "simple_func_test"
+    run(simple_func_test)

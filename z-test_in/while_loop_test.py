@@ -4,3 +4,4 @@ while a < 10:
     # See if a is larger than 12
     if a > 12:
         a = a - 6
+        print(a ** 13)

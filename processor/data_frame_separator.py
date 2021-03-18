@@ -7,6 +7,9 @@ from grammars import operations as op
 from grammars import if_elif_else as iee
 from grammars import while_loop as wl
 
+from grammars import set_function as sf
+from grammars import define_func as df
+
 EMPTY = -2
 NO_TYPE_FOUND = -1
 NORMAL = 0
@@ -39,10 +42,24 @@ class Separator:
             if type(e) != SyntaxError and type(e) != NameError:
                 raise e
 
+        # Set functions
+        if len(line) >= 5 and line[0:5] == "eval(":
+            return sf.FuncMap.eval2eval(line), NORMAL
+        if len(line) >= 5 and line[0:5] == "type(":
+            return sf.FuncMap.type2class(line), NORMAL
+        if len(line) >= 6 and line[0:6] == "print(":
+            return sf.FuncMap.print2disp(line), NORMAL
+        if len(line) >= 6 and line[0:6] == "input(":
+            return sf.FuncMap.input2input(line), NORMAL
+
         # Operations
         if line[0:1] in ["+", "-", "*", "=", "/", "&", "|", "^", "%", "!", "<", ">"] or (len(line) >= 3 and line[0:2] in ["or", "in", "is"] and (line[2] == ' ' or line[2] == '\n')) or line[0:3] in ["and", "not"]:
             obj = op.Operation(line)
             return obj.aim_content, NORMAL
+
+        # Return line
+        if len(line) >= 6 and line[0:6] == "return" and (line[6] in ['', ' ', '\n', '\t', '#', '"', "'"]):
+            return df.DefineFunc.translate_ret(), NORMAL
 
         if cast_comments:
             obj = cmt.Comment(line)
@@ -67,20 +84,20 @@ class Separator:
         if not line:
             return line, EMPTY
 
-        if len(line) >= 2:
-            if line[0:2] == 'if':
-                obj = iee.FrameIf(line)
-                return obj.aim_content, NORMAL
         if len(line) >= 3:
-            if line[0:3] == 'def':
-                pass
-            if line[0:3] == 'for':
-                pass
-        if len(line) >= 4:
-            if line[0:4] in ['elif', 'else']:
+            if line[0:3] == 'if ':
                 obj = iee.FrameIf(line)
                 return obj.aim_content, NORMAL
+        if len(line) >= 4:
+            if line[0:4] == 'def ':
+                return df.DefineFunc.translate_def(line), NORMAL
+            elif line[0:4] == 'for ':
+                pass
         if len(line) >= 5:
-            if line[0:5] == 'while':
+            if line[0:5] in ['elif ', 'else ']:
+                obj = iee.FrameIf(line)
+                return obj.aim_content, NORMAL
+        if len(line) >= 6:
+            if line[0:6] == 'while ':
                 obj = wl.WhileLoop(line)
                 return obj.aim_content, NORMAL

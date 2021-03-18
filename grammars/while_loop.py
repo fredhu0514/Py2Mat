@@ -1,5 +1,5 @@
 """
-This is the file describes primitive data types.
+This is the file describes while loop.
 """
 
 import enum
