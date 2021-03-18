@@ -5,6 +5,7 @@ from grammars import primitive_data as pd
 from grammars import operations as op
 
 from grammars import if_elif_else as iee
+from grammars import while_loop as wl
 
 EMPTY = -2
 NO_TYPE_FOUND = -1
@@ -81,4 +82,5 @@ class Separator:
                 return obj.aim_content, NORMAL
         if len(line) >= 5:
             if line[0:5] == 'while':
-                pass
+                obj = wl.WhileLoop(line)
+                return obj.aim_content, NORMAL

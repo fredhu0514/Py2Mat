@@ -17,4 +17,5 @@ if __name__ == "__main__":
     operations = "operations"
     comments = "simple_comments_test"
     indentation = "indentation_if_test"
-    run(indentation)
+    while_loop = "while_loop_test"
+    run(while_loop)
