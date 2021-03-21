@@ -24,3 +24,8 @@ class FuncMap:
     def input2input(cls, raw_line):
         "input( --> input("
         return raw_line[0:6] + cp.CoreProcessor.inline_process(raw_line[6:len(raw_line)])
+
+    @classmethod
+    def len2length(cls, raw_line):
+        "len( --> length("
+        return "length(" + cp.CoreProcessor.inline_process(raw_line[4:len(raw_line)])

@@ -20,4 +20,6 @@ if __name__ == "__main__":
     while_loop = "while_loop_test"
     complex_func_test = "complex_func_test"
     simple_func_test = "simple_func_test"
-    run(simple_func_test)
+    test_file = "test_file"
+    array_test = "array_test"
+    run(array_test)

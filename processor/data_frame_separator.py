@@ -10,6 +10,8 @@ from grammars import while_loop as wl
 from grammars import set_function as sf
 from grammars import define_func as df
 
+from grammars import unit_processor as up
+
 EMPTY = -2
 NO_TYPE_FOUND = -1
 NORMAL = 0
@@ -43,6 +45,8 @@ class Separator:
                 raise e
 
         # Set functions
+        if len(line) >= 4 and line[0:4] == "len(":
+            return sf.FuncMap.len2length(line), NORMAL
         if len(line) >= 5 and line[0:5] == "eval(":
             return sf.FuncMap.eval2eval(line), NORMAL
         if len(line) >= 5 and line[0:5] == "type(":
@@ -72,8 +76,7 @@ class Separator:
             count = 0
             while count < len(line) and line[count] != ' ':
                 count += 1
-            return line[0:count] + cp.CoreProcessor.inline_process(line[count:len(line)], False), NO_TYPE_FOUND
-
+            return up.UnitProcess.separation(line[0:count]) + cp.CoreProcessor.inline_process(line[count:len(line)], False), NO_TYPE_FOUND
         return line, NO_TYPE_FOUND
 
     @classmethod
